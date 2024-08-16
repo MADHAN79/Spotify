@@ -1,0 +1,19 @@
+//in this component we'll display the home & albums
+
+import { Route, Routes } from "react-router-dom"
+import DisplayHome from "./DisplayHome"
+
+const Display = () => {
+  return (
+    <div className="w-[100%] m-2 px-6 pt-4 rounded bg-[#121212] text-white overflow-auto lg:w-[75%] lg:ml-0">
+
+        {/* we are creating Routes for the HOME & ALBUMS page */}
+        <Routes>
+            {/* path="/" is LANDING PAGE,here it displays DisplayHome component*/}
+            <Route path="/" element={<DisplayHome />}  />
+        </Routes>
+    </div>
+  )
+}
+
+export default Display
