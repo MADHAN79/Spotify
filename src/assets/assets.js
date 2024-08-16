@@ -42,8 +42,6 @@ import song1 from  './song1.mp3'
 import song2 from  './song2.mp3'
 import song3 from  './song3.mp3'
 
-//importing all the images here from the assets & exporting as a "assets" OBJECT,
-//so that its easy to use the images in components.
 export const assets = {
     bell_icon,
     home_icon,
@@ -71,8 +69,6 @@ export const assets = {
     clock_icon
 }
 
-//predefined albumsData ARRAY to display in the website with unique id.
-//5 albums
 export const albumsData = [
     {   
         id:0,
@@ -118,8 +114,6 @@ export const albumsData = [
     }
 ]
 
-//predefined songsData ARRAY to display in the website with unique id.
-//8 songs.
 export const songsData = [
     {
         id:0,
