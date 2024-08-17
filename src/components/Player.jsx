@@ -1,6 +1,12 @@
+import { useContext } from 'react'
 import {assets, songsData} from '../assets/assets'
+import { PlayerContext } from '../context/PlayerContext'
 
 const Player = () => {
+
+    //with the useContext only we are going to implement the functionalities for both seek-bar & song player controls.
+    const {seekBar, seekBg, playStatus, play, pause} = useContext(PlayerContext);
+
   return (
     <div className='h-[10%] bg-black flex justify-between items-center text-white px-4 '>
         
@@ -22,7 +28,8 @@ const Player = () => {
             <div className='flex gap-4'>
                 <img className='w-4 cursor-pointer' src={assets.shuffle_icon} alt=''  />
                 <img className='w-4 cursor-pointer' src={assets.prev_icon} alt=''  />
-                <img className='w-4 cursor-pointer' src={assets.play_icon} alt=''  />
+                <img onClick={play} className='w-4 cursor-pointer' src={assets.play_icon} alt=''  />
+                <img onClick={pause} className='w-4 cursor-pointer' src={assets.pause_icon} alt=''  />
                 <img className='w-4 cursor-pointer' src={assets.next_icon} alt=''  />
                 <img className='w-4 cursor-pointer' src={assets.loop_icon} alt=''  />
             </div>
@@ -30,10 +37,10 @@ const Player = () => {
             {/* this div includes: just starting time, seek-bar & end time */}
             <div className='flex items-center gap-5'>
                 <p>1:05</p>
-                <div className='w-[60vw] max-w-[500px] bg-gray-300 rounded-full cursor-pointer'>
+                <div ref={seekBg} className='w-[60vw] max-w-[500px] bg-gray-600 rounded-full cursor-pointer'>
                     {/* as the song play time increases the "w-0 green" wil get updated accordingly eg:w-10 so it looks like seek bar ! */}
                     {/* that seek-bar logic will be in context folder */}
-                    <hr className='h-1 border-none w-0 bg-green-800 rounded-full'/>
+                    <hr ref={seekBar} className='h-1 border-none w-0 bg-[#38ff49a2] rounded-full'/>
                 </div>
                 <p>3:09</p>
             </div>
