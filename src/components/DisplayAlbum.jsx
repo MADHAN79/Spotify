@@ -3,6 +3,8 @@
 import { useParams } from "react-router-dom"
 import Navbar from "./Navbar"
 import { albumsData, assets, songsData } from "../assets/assets";
+import { useContext } from "react";
+import { PlayerContext } from "../context/PlayerContext";
 
 
 const DisplayAlbum = () => {
@@ -12,6 +14,9 @@ const DisplayAlbum = () => {
     const {id} = useParams();
     //mapping each value in albumsData in albumData, using this data we'll display each album's data in each page.
     const albumData = albumsData[id];
+
+    //enabling the click to play the song func
+    const {playWithId} = useContext(PlayerContext)
 
   return (
     <>
@@ -44,7 +49,7 @@ const DisplayAlbum = () => {
      <hr />
      {
       songsData.map((item, index) =>(
-        <div key={index} className="grid grid-cols-3 sm:grid-cols-4 gap-2 p-2 items-center text-[#a7a7a7] hover:bg-[#38ff4967] cursor-pointer rounded-[10px]">
+        <div onClick={() => {playWithId(item.id)}} key={index} className="grid grid-cols-3 sm:grid-cols-4 gap-2 p-2 items-center text-[#a7a7a7] hover:bg-[#38ff4967] cursor-pointer rounded-[10px]">
           <p className="text-white">
             {/* since our dataset index starts from 0 we are giving +1 */}
             <b className="mr-4 text-[#a7a7a7]">{index+1}</b>

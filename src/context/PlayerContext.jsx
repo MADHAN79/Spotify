@@ -35,6 +35,7 @@ const PlayerContextProvider = ({children}) => {
 
 // ----------------------------------->
 
+// <---------------------------------->
     const play = () => {
         audioRef.current.play(); //current.play() is a method
         setPlayStatus(true);
@@ -45,7 +46,40 @@ const PlayerContextProvider = ({children}) => {
         setPlayStatus(false);
     }
 
-//===================================
+// ----------------------------------->
+
+// <----------------------------------
+    //playing with song id:
+    const playWithId = async (id) => {
+        await setTrack(songsData[id]);//track will get set in the track state.
+        await audioRef.current.play();//now automatically the song assigned in the track should play.
+        setPlayStatus(true) //also ensuring the playStatus set to true.
+    }
+
+// ----------------------------------->
+
+// <----------------------------------
+    //implementing prev & forward track button:
+    const previous = async () => {
+        //prevents the track not being changed to "-1/last song in the list".
+        if(track.id>0) {
+            await setTrack(songsData[track.id-1]);//whenever the track changed the play will by default as we set gets paused.
+            await audioRef.current.play();//hence we are setting the track to play.
+            setPlayStatus(true); //also ensuring the playStatus set to true.
+        }
+    }
+
+    const next = async () => {
+        //prevents the track not being changed to "0/first song in the list".
+        if(track.id < songsData.length-1) {
+            await setTrack(songsData[track.id+1]);//whenever the track changed the play will by default as we set gets paused.
+            await audioRef.current.play();//hence we are setting the track to play.
+            setPlayStatus(true); //also ensuring the playStatus set to true.
+        }
+    }
+
+// ----------------------------------->
+
     //dynamically changing the starting-time in player:
     useEffect(() => {
         setTimeout(() => {
@@ -82,14 +116,15 @@ const PlayerContextProvider = ({children}) => {
 
     //everything inside this object can be accessed globally
     const contextValue = {
-        //creating one reference for the audio component mentioned in App.jsx
-        audioRef,
+        audioRef, //creating one reference for the audio component mentioned in App.jsx
         seekBar,
         seekBg,
         track, setTrack,
         playStatus, setPlayStatus,
         time, setTime,
         play, pause,
+        playWithId,
+        previous, next,
     }
 
   return (

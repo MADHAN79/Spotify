@@ -5,7 +5,7 @@ import { PlayerContext } from '../context/PlayerContext'
 const Player = () => {
 
     //with the useContext only we are going to implement the functionalities in all elements of player controls.
-    const {track, seekBar, seekBg, playStatus, play, pause, time} = useContext(PlayerContext);
+    const {track, seekBar, seekBg, playStatus, play, pause, time, previous, next} = useContext(PlayerContext);
     
 
 
@@ -29,7 +29,7 @@ const Player = () => {
             
             <div className='flex gap-4'>
                 <img className='w-4 cursor-pointer' src={assets.shuffle_icon} alt=''  />
-                <img className='w-4 cursor-pointer' src={assets.prev_icon} alt=''  />
+                <img onClick={previous} className='w-4 cursor-pointer' src={assets.prev_icon} alt=''  />
                 
                 {/* to switch btw play&pause icons */}
                 { playStatus
@@ -37,7 +37,7 @@ const Player = () => {
                    : <img onClick={play} className='w-4 cursor-pointer' src={assets.play_icon} alt=''  />
                 }
 
-                <img className='w-4 cursor-pointer' src={assets.next_icon} alt=''  />
+                <img onClick={next} className='w-4 cursor-pointer' src={assets.next_icon} alt=''  />
                 <img className='w-4 cursor-pointer' src={assets.loop_icon} alt=''  />
             </div>
 
