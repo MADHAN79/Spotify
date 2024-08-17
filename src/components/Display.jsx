@@ -2,6 +2,7 @@
 
 import { Route, Routes } from "react-router-dom"
 import DisplayHome from "./DisplayHome"
+import DisplayAlbum from "./DisplayAlbum"
 
 const Display = () => {
   return (
@@ -11,6 +12,9 @@ const Display = () => {
         <Routes>
             {/* path="/" is LANDING PAGE,here it displays DisplayHome component*/}
             <Route path="/" element={<DisplayHome />}  />
+            {/* routing based on each albums id |this id gets imported using useParams in DisplayAlbum.jsx*/}
+            {/* here we are just mentioning how the url to be displayed */}
+            <Route path="/album/:id" element={<DisplayAlbum />}  />
         </Routes>
     </div>
   )
