@@ -1,9 +1,13 @@
-# React + Vite
+NO SHORTCUTS LIKE API & EXTERNAL TOOLS
+MADE IN PURE LOGIC LAND:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tech stacks used:
 
-Currently, two official plugins are available:
+React18
+Tailwind CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-"# Spotify" 
+
+Concepts used:
+
+This project uses all the fundamental concepts of
+React like Components, State, useRef, useEffect, useContext and eventHandler and much more...

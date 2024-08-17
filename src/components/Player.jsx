@@ -5,7 +5,7 @@ import { PlayerContext } from '../context/PlayerContext'
 const Player = () => {
 
     //with the useContext only we are going to implement the functionalities in all elements of player controls.
-    const {track, seekBar, seekBg, playStatus, play, pause, time, previous, next} = useContext(PlayerContext);
+    const {track, seekBar, seekBg, playStatus, play, pause, time, previous, next, seekSong} = useContext(PlayerContext);
     
 
 
@@ -44,7 +44,7 @@ const Player = () => {
             {/* this div includes: just starting time, seek-bar & end time */}
             <div className='flex items-center gap-5'>
                 <p>{time.currentTime.minute}:{time.currentTime.second}</p>
-                <div ref={seekBg} className='w-[60vw] max-w-[500px] bg-gray-600 rounded-full cursor-pointer'>
+                <div ref={seekBg} onClick={seekSong} className='w-[60vw] max-w-[500px] bg-gray-600 rounded-full cursor-pointer'>
                     {/* as the song play time increases the "w-0 green" wil get updated accordingly eg:w-10 so it looks like seek bar ! */}
                     {/* that seek-bar logic will be in context folder */}
                     <hr ref={seekBar} className='h-1 border-none w-0 bg-[#38ff49a2] rounded-full'/>

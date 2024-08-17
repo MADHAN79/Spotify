@@ -1,3 +1,5 @@
+//this is the "GOD FILE :)" for all logic behind the player functionalities.
+
 import { createContext, useEffect, useRef, useState } from "react";
 import { songsData } from "../assets/assets";
 
@@ -80,6 +82,16 @@ const PlayerContextProvider = ({children}) => {
 
 // ----------------------------------->
 
+// <----------------------------------
+    //implementing seek-bar dragging logic:
+    //passing event(onClick) in async func.
+    const seekSong = async (e) => {
+        //console.log(e); - with this we can use nativeElement > offsetX 's value to seek through the song.
+        audioRef.current.currentTime = ((e.nativeEvent.offsetX / seekBg.current.offsetWidth)*audioRef.current.duration) //(offsetX/offsetWidth)returns in %
+    }
+
+// ----------------------------------->    
+
     //dynamically changing the starting-time in player:
     useEffect(() => {
         setTimeout(() => {
@@ -117,7 +129,7 @@ const PlayerContextProvider = ({children}) => {
     //everything inside this object can be accessed globally
     const contextValue = {
         audioRef, //creating one reference for the audio component mentioned in App.jsx
-        seekBar,
+        seekBar, //accessing all the below contexts, in Player.jsx
         seekBg,
         track, setTrack,
         playStatus, setPlayStatus,
@@ -125,6 +137,7 @@ const PlayerContextProvider = ({children}) => {
         play, pause,
         playWithId,
         previous, next,
+        seekSong 
     }
 
   return (
