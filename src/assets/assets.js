@@ -110,7 +110,7 @@ export const albumsData = [
         name: "Happy Favorites",
         image: img15,
         desc:"Your weekly update of the most played tracks",
-        bgColor:"#744210"
+        bgColor:"#cc9900"
     }
 ]
 
